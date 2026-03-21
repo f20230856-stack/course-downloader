@@ -1,0 +1,20 @@
+{
+  "base_url": "https://quantaaws.bits-goa.ac.in/",
+  "login_url": "https://quantaaws.bits-goa.ac.in/login/index.php",
+  "courses_page_url": "https://quantaaws.bits-goa.ac.in/my/",
+  "semester_name": "Semester-6",
+  "download_root": "./downloads",
+  "headless": false,
+  "verify_ssl": false,
+  "request_timeout_seconds": 30,
+  "selectors": {
+    "login_ready": "body.loggedin, body#page-my-index",
+    "course_card": ".block_myoverview .card.dashboard-card",
+    "course_name": ".multiline, .coursename",
+    "course_link": "a.aalink.coursename, a[href*='/course/view.php']",
+    "files_tab": "",
+    "file_row": "li.activity.resource, li.activity.url",
+    "file_name": ".instancename",
+    "file_link": "a.aalink"
+  }
+}

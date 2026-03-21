@@ -1,0 +1,5 @@
+.venv/
+downloads/
+selectors.json
+__pycache__/
+*.pyc
