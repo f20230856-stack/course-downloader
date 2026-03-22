@@ -19,21 +19,22 @@ def sanitize_name(name: str) -> str:
 
 
 def clean_course_name(name: str) -> str:
-    cleaned = sanitize_name(name)
-
+    cleaned = name.strip()
+    
     # Moodle dashboard cards may include hidden accessibility text in title blocks.
     noise_patterns = [
         r"(?i)^course is starred\.?\s*",
         r"(?i)^course is not starred\.?\s*",
         r"(?i)^star this course\.?\s*",
         r"(?i)^unstar this course\.?\s*",
+        r"(?i)^course name\s+",
+        r"(?i)^course\s+(?!code|content)",
     ]
     for pattern in noise_patterns:
         cleaned = re.sub(pattern, "", cleaned)
-
-    cleaned = re.sub(r"(?i)^course name\s+", "", cleaned)
-    cleaned = re.sub(r"(?i)^course\s+", "", cleaned)
-
+    
+    cleaned = cleaned.strip()
+    cleaned = re.sub(r"\s+", " ", cleaned)
     return sanitize_name(cleaned)
 
 
